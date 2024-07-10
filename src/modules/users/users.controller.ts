@@ -1,4 +1,4 @@
-// controller
+//users controller
 
 import { Request, Response } from "express";
 import bcrypt from 'bcryptjs';
@@ -44,8 +44,18 @@ const loginUser = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
+// Get all users
+const getAllUsers = async (req: Request, res: Response) => {
+  try {
+    const users = await UserServices.getAllUsersService();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error('Error in getAllUsers:', error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
 export const UserController = {
   createUser,
   loginUser,
+  getAllUsers
 };

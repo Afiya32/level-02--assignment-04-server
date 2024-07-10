@@ -1,5 +1,5 @@
 "use strict";
-// services
+//users services
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -38,7 +38,11 @@ const findUserByEmail = (email) => __awaiter(void 0, void 0, void 0, function* (
         throw error;
     }
 });
+const getAllUsersService = () => __awaiter(void 0, void 0, void 0, function* () {
+    return users_models_1.UsersModel.find();
+});
 exports.UserServices = {
     createUserDB,
     findUserByEmail,
+    getAllUsersService
 };

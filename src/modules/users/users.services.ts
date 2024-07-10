@@ -1,4 +1,4 @@
-// services
+//users services
 
 import bcrypt  from 'bcryptjs';
 import { IUsers } from "./users.interface";
@@ -26,8 +26,12 @@ const findUserByEmail = async (email: string) => {
     throw error;
   }
 };
+const getAllUsersService = async () => {
+  return UsersModel.find();
+};
 
 export const UserServices = {
   createUserDB,
   findUserByEmail,
+  getAllUsersService
 };

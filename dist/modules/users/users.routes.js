@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// routes
+//user routes
 const express_1 = __importDefault(require("express"));
 const zod_1 = require("zod");
 const users_validations_1 = require("./users.validations");
@@ -27,4 +27,6 @@ const validate = (schema) => (req, res, next) => {
 UserRouter.post('/auth/signup', validate(users_validations_1.userValidation.userSignupSchema), users_controller_1.UserController.createUser);
 // User login route
 UserRouter.post('/auth/login', validate(users_validations_1.userValidation.userLoginSchema), users_controller_1.UserController.loginUser);
+// Get all users route
+UserRouter.get('/', users_controller_1.UserController.getAllUsers);
 exports.default = UserRouter;

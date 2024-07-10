@@ -1,4 +1,4 @@
-// routes
+//user routes
 import express from "express";
 import { z, ZodSchema } from 'zod';
 import { userValidation } from "./users.validations";
@@ -27,5 +27,6 @@ UserRouter.post('/auth/signup', validate(userValidation.userSignupSchema), UserC
 
 // User login route
 UserRouter.post('/auth/login', validate(userValidation.userLoginSchema), UserController.loginUser);
-
+// Get all users route
+UserRouter.get('/', UserController.getAllUsers);
 export default UserRouter;
