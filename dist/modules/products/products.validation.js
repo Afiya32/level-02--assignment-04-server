@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.productSchema = void 0;
-// validation
+//product validation
 const zod_1 = require("zod");
 exports.productSchema = zod_1.z.object({
     name: zod_1.z.string(),

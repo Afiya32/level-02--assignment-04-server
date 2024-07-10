@@ -1,8 +1,9 @@
+//product controller
 import { Request, Response } from "express";
 import { productServices } from "./products.services";
 import { productSchema } from "./products.validation";
 
-// controller
+
 const createProduct = async (req: Request, res: Response) => {
     try {
       const parsedProduct = productSchema.parse(req.body);

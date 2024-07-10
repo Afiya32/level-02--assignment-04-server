@@ -1,4 +1,4 @@
-// interface
+//product interface
 
 export interface IProduct {
     name: string;

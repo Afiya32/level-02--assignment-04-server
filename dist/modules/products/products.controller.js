@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.productController = void 0;
 const products_services_1 = require("./products.services");
 const products_validation_1 = require("./products.validation");
-// controller
 const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const parsedProduct = products_validation_1.productSchema.parse(req.body);

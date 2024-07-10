@@ -1,4 +1,4 @@
-// routes
+//product routes
 
 import { Router } from "express";
 import { productController } from "./products.controller";

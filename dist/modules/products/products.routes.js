@@ -1,5 +1,5 @@
 "use strict";
-// routes
+//product routes
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const products_controller_1 = require("./products.controller");

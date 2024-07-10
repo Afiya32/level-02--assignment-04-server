@@ -1,3 +1,3 @@
 "use strict";
-// interface
+//product interface
 Object.defineProperty(exports, "__esModule", { value: true });

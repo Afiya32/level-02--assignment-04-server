@@ -1,4 +1,4 @@
-// services
+// product services
 import { IProduct } from "./products.interface";
 import { Product } from "./products.model";
 

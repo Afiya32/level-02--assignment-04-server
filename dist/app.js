@@ -9,12 +9,14 @@ const products_routes_1 = __importDefault(require("./modules/products/products.r
 const error_middleware_1 = __importDefault(require("./middlewares/error.middleware"));
 const notFound_middleware_1 = __importDefault(require("./middlewares/notFound.middleware"));
 const users_routes_1 = __importDefault(require("./modules/users/users.routes"));
+const carts_rotues_1 = __importDefault(require("./modules/carts/carts.rotues"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 // routes
 app.use('/api/users', users_routes_1.default);
 app.use('/api/products', products_routes_1.default);
+app.use('/api/carts', carts_rotues_1.default);
 // Error Handler
 app.use(notFound_middleware_1.default);
 app.use(error_middleware_1.default);

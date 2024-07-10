@@ -1,4 +1,4 @@
-// model
+//product model
 import { Schema, model } from 'mongoose';
 import { IProduct } from './products.interface';
 
