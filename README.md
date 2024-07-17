@@ -21,20 +21,20 @@ Getting Started
 Clone the repository:
 
 bash
-কোড কপি করুন
-git clone https://github.com/yourusername/mechanical-keyboard-shop-backend.git
+
+git clone https://github.com/Afiya32/level-02--assignment-04-server/edit/main).git
 cd mechanical-keyboard-shop-backend
 Install dependencies:
 
 bash
-কোড কপি করুন
+
 npm install
 Environment Variables:
 
 Create a .env file in the root directory and add the following variables:
 
 env
-কোড কপি করুন
+
 PORT=5000
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
@@ -42,7 +42,7 @@ STRIPE_SECRET_KEY=your_stripe_secret_key (optional)
 Run the server:
 
 bash
-কোড কপি করুন
+
 npm run dev
 Folder Structure
 src/
