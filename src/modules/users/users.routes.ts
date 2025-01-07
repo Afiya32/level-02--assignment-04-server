@@ -3,7 +3,6 @@ import express from "express";
 import { z, ZodSchema } from 'zod';
 import { userValidation } from "./users.validations";
 import { UserController } from "./users.controller";
-
 const UserRouter = express.Router();
 
 type ZodSchemaType = ZodSchema<unknown>;
@@ -11,8 +10,8 @@ type ZodSchemaType = ZodSchema<unknown>;
 // Validate middleware
 const validate = (schema: ZodSchemaType) => (req: express.Request, res: express.Response, next: express.NextFunction) => {
   try {
-    schema.parse(req.body);
-    next();
+    schema.parse(req.body); // Validate request body against schema
+    next(); // Proceed to the next middleware/controller function
   } catch (error) {
     if (error instanceof z.ZodError) {
       return res.status(400).json({ message: "Validation error", errors: error.errors });
@@ -27,6 +26,7 @@ UserRouter.post('/auth/signup', validate(userValidation.userSignupSchema), UserC
 
 // User login route
 UserRouter.post('/auth/login', validate(userValidation.userLoginSchema), UserController.loginUser);
+
 // Get all users route
 UserRouter.get('/', UserController.getAllUsers);
 export default UserRouter;

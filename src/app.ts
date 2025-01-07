@@ -6,22 +6,29 @@ import errorHandler from "./middlewares/error.middleware";
 import notFoundHandler from "./middlewares/notFound.middleware";
 import UserRouter from "./modules/users/users.routes";
 import cartRouter from "./modules/carts/carts.rotues";
+import categoryRouter from "./modules/category/categories.routes";
+import duaRouter from "./modules/dua/duas.routes";
+import subcategoryRouter from "./modules/subcategory/subcategories.routes";
 const app: Application = express();
 
-
-app.use(express.json());
 app.use(cors());
+app.use(express.json()); // Body parser middleware for JSON
 
-// routes
-
+// Routes
 app.use('/api/users', UserRouter);
 app.use('/api/products', productRouter);
 app.use('/api/carts', cartRouter);
-// Error Handler
-app.use(notFoundHandler);
-app.use(errorHandler);
+app.use("/api/categories", categoryRouter);
+app.use("/api/subcategories", subcategoryRouter);
+app.use("/api/duas", duaRouter);
+
+// Error Handler Middleware
+app.use(notFoundHandler); // Handle 404 Not Found errors
+app.use(errorHandler); // General error handler
+
 app.get("/", (req: Request, res: Response) => {
-  res.send("Welcome to mechanical keyboard server ");
+  res.send("Welcome to the mechanical keyboard server");
 });
+
 
 export default app;

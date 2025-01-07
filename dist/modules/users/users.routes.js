@@ -12,8 +12,8 @@ const UserRouter = express_1.default.Router();
 // Validate middleware
 const validate = (schema) => (req, res, next) => {
     try {
-        schema.parse(req.body);
-        next();
+        schema.parse(req.body); // Validate request body against schema
+        next(); // Proceed to the next middleware/controller function
     }
     catch (error) {
         if (error instanceof zod_1.z.ZodError) {

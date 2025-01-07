@@ -9,7 +9,7 @@ import { cartSchema } from "./carts.validation";
 const createCartItem = async (req: Request, res: Response) => {
     try {
       const parsedCartItem = cartSchema.parse(req.body);
-      const cartItem = await cartServices.createCartItemService(parsedCartItem);
+      const cartItem  = await cartServices.createCartItemService(parsedCartItem);
       res.status(201).json(cartItem);
     } catch (error: unknown) {
       if (error instanceof Error) {

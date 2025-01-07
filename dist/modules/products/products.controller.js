@@ -14,16 +14,18 @@ const products_services_1 = require("./products.services");
 const products_validation_1 = require("./products.validation");
 const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log("Request Body:", req.body);
         const parsedProduct = products_validation_1.productSchema.parse(req.body);
         const product = yield products_services_1.productServices.createProductService(parsedProduct);
-        res.status(201).json(product);
+        res.status(201).json({ success: true, product });
     }
     catch (error) {
+        console.error("Error:", error);
         if (error instanceof Error) {
-            res.status(400).json({ message: error.message });
+            res.status(400).json({ success: false, message: error.message });
         }
         else {
-            res.status(400).json({ message: 'Unknown error occurred' });
+            res.status(400).json({ success: false, message: "Unknown error occurred" });
         }
     }
 });
@@ -37,7 +39,7 @@ const getAllProducts = (req, res) => __awaiter(void 0, void 0, void 0, function*
             res.status(500).json({ message: error.message });
         }
         else {
-            res.status(500).json({ message: 'Unknown error occurred' });
+            res.status(500).json({ message: "Unknown error occurred" });
         }
     }
 });
@@ -45,7 +47,7 @@ const getProductById = (req, res) => __awaiter(void 0, void 0, void 0, function*
     try {
         const product = yield products_services_1.productServices.getProductByIdService(req.params.id);
         if (!product) {
-            return res.status(404).json({ message: 'Product not found' });
+            return res.status(404).json({ message: "Product not found" });
         }
         res.json(product);
     }
@@ -54,7 +56,7 @@ const getProductById = (req, res) => __awaiter(void 0, void 0, void 0, function*
             res.status(500).json({ message: error.message });
         }
         else {
-            res.status(500).json({ message: 'Unknown error occurred' });
+            res.status(500).json({ message: "Unknown error occurred" });
         }
     }
 });
@@ -63,7 +65,7 @@ const updateProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         const parsedProduct = products_validation_1.productSchema.parse(req.body);
         const updatedProduct = yield products_services_1.productServices.updateProductService(req.params.id, parsedProduct);
         if (!updatedProduct) {
-            return res.status(404).json({ message: 'Product not found' });
+            return res.status(404).json({ message: "Product not found" });
         }
         res.json(updatedProduct);
     }
@@ -72,7 +74,7 @@ const updateProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             res.status(400).json({ message: error.message });
         }
         else {
-            res.status(400).json({ message: 'Unknown error occurred' });
+            res.status(400).json({ message: "Unknown error occurred" });
         }
     }
 });
@@ -80,16 +82,16 @@ const deleteProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     try {
         const deletedProduct = yield products_services_1.productServices.deleteProductService(req.params.id);
         if (!deletedProduct) {
-            return res.status(404).json({ message: 'Product not found' });
+            return res.status(404).json({ message: "Product not found" });
         }
-        res.json({ message: 'Product deleted' });
+        res.json({ message: "Product deleted" });
     }
     catch (error) {
         if (error instanceof Error) {
             res.status(500).json({ message: error.message });
         }
         else {
-            res.status(500).json({ message: 'Unknown error occurred' });
+            res.status(500).json({ message: "Unknown error occurred" });
         }
     }
 });
